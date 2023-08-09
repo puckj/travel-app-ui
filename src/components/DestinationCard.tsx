@@ -6,11 +6,16 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { Entypo } from "@expo/vector-icons";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackNavigationProp } from "../navigation/types";
 
 const DestinationCard = ({ item }: any) => {
+  const navigation = useNavigation<RootStackNavigationProp>();
   const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <TouchableOpacity
+      onPress={() => navigation.navigate("DestinationScreen", { ...item })}
       style={{ width: wp(44), height: wp(65) }}
       className="flex justify-end relative p-4 py-6 space-y-2 mb-5"
     >
